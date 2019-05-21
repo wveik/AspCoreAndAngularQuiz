@@ -21,10 +21,11 @@ namespace DataAccessLayer
 			{
 				if (_playersRepository == null)
 					_playersRepository = new PlayerRepository(DataBase);
+
 				return _playersRepository;
 			}
 		}
-		
+
 		public void Save()
 		{
 			DataBase.SaveChanges();
