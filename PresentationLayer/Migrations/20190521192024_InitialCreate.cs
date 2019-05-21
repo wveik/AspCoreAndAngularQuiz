@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace PresentationLayer.Migrations
+namespace DataAccessLayer.Migrations
 {
     public partial class InitialCreate : Migration
     {

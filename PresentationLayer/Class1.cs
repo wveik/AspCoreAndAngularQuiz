@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PresentationLayer.EF;
+using DataAccessLayer.EF;
 
-namespace PresentationLayer
+namespace DataAccessLayer
 {
 	public class Class1
 	{

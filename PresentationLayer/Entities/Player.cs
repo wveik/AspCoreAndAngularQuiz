@@ -1,4 +1,4 @@
-﻿namespace PresentationLayer.Entities
+﻿namespace DataAccessLayer.Entities
 {
 	public class Player
 	{

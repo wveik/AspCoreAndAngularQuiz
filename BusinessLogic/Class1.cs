@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using PresentationLayer.EF;
 
 namespace BusinessLogic
 {
@@ -8,7 +7,7 @@ namespace BusinessLogic
 	{
 		public void Get()
 		{
-			var temp = new PresentationLayer.Class1();
+			var temp = new DataAccessLayer.Class1();
 			temp.Test();
 		}
 	}

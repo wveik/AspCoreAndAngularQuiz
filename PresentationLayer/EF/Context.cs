@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PresentationLayer.Entities;
+﻿using DataAccessLayer.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace PresentationLayer.EF
+namespace DataAccessLayer.EF
 {
 	public class Context : DbContext
 	{
