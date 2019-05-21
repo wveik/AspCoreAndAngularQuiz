@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BusinessLogic;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspCoreAndAngularQuiz.Controllers
@@ -27,13 +26,6 @@ namespace AspCoreAndAngularQuiz.Controllers
 			});
 		}
 
-		[HttpGet("[action]")]
-		public int Test()
-		{
-			var f = new Class1();
-			f.Get();
-			return 1;
-		}
 
 		public class WeatherForecast
 		{
