@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { QuestionComponent } from './Components/question/question.component';
+import { ApiServiceService } from './services/api-service.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { QuestionComponent } from './Components/question/question.component';
     FormsModule,
     
   ],
-  providers: [],
+  providers: [
+    ApiServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
