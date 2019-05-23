@@ -1,3 +1,8 @@
+using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
+using DataAccessLayer;
+using DataAccessLayer.Interfaces;
+using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +24,10 @@ namespace AspCoreAndAngularQuiz
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			InitUnitOfWork(services);
+
+			InitServices(services);
+
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
 			// In production, the Angular files will be served from this directory
@@ -26,6 +35,16 @@ namespace AspCoreAndAngularQuiz
 			{
 				configuration.RootPath = "ClientApp/dist";
 			});
+		}
+
+		private void InitServices(IServiceCollection services)
+		{
+			services.AddSingleton<IQuestionService, QuestionService>();
+		}
+
+		private void InitUnitOfWork(IServiceCollection services)
+		{
+			services.AddSingleton<IUnitOfWork, UnitOfWork>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

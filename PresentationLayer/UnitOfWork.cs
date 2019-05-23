@@ -9,6 +9,7 @@ namespace DataAccessLayer
 	{
 		private Context DataBase { get; }
 		private PlayerRepository _playersRepository;
+		private QuestionRepository _questionRepository;
 
 		public UnitOfWork()
 		{
@@ -23,6 +24,17 @@ namespace DataAccessLayer
 					_playersRepository = new PlayerRepository(DataBase);
 
 				return _playersRepository;
+			}
+		}
+
+		public IRepository<Question> Questions
+		{
+			get
+			{
+				if (_questionRepository == null)
+					_questionRepository = new QuestionRepository(DataBase);
+
+				return _questionRepository;
 			}
 		}
 

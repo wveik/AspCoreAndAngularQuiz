@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AspCoreAndAngularQuiz.Models.Questions;
+using BusinessLogic.Interfaces;
+using Common.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +14,13 @@ namespace AspCoreAndAngularQuiz.Controllers
     [ApiController]
     public class QuestionsController : ControllerBase
     {
-        // GET: api/Questions
+	    private IQuestionService _questionService;
+		public QuestionsController(IQuestionService questionService)
+		{
+			_questionService = questionService;
+		}
+
+	    // GET: api/Questions
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -30,20 +38,10 @@ namespace AspCoreAndAngularQuiz.Controllers
         [HttpPost]
         public void Post([FromBody] Question question)
         {
-	        question.ToString();
-
-        }
-
-        // PUT: api/Questions/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
-    }
+			_questionService.SaveQuestion(new QuestionDto()
+			{
+				Text = question.Text
+			});
+		}
+	}
 }

@@ -18,14 +18,17 @@ namespace DataAccessLayer.Repositories
 		{
 			return _db.Players;
 		}
+
 		public Player Read(int id)
 		{
 			return _db.Players.Find(id);
 		}
+
 		public void Create(Player player)
 		{
 			_db.Players.Add(player);
 		}
+
 		public void Update(Player player)
 		{
 			var previousPlayer = _db.Players.Find(player.Id);
@@ -46,6 +49,7 @@ namespace DataAccessLayer.Repositories
 				_db.Players.Add(newPlayer);
 			}
 		}
+
 		public void Delete(int id)
 		{
 			var player = _db.Players.Find(id);
