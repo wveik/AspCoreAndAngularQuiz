@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NotImplementedException = System.NotImplementedException;
 
 namespace AspCoreAndAngularQuiz
 {
@@ -81,6 +80,7 @@ namespace AspCoreAndAngularQuiz
 				app.UseExceptionHandler("/Error");
 			}
 
+			app.UseDefaultFiles();
 			app.UseStaticFiles();
 			app.UseSpaStaticFiles();
 

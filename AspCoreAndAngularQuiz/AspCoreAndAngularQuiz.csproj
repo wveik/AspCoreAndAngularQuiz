@@ -26,6 +26,27 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\favicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\es2015-polyfills.js" />
+    <None Include="wwwroot\es2015-polyfills.js.map" />
+    <None Include="wwwroot\favicon.ico" />
+    <None Include="wwwroot\index.html" />
+    <None Include="wwwroot\main.js" />
+    <None Include="wwwroot\main.js.map" />
+    <None Include="wwwroot\polyfills.js" />
+    <None Include="wwwroot\polyfills.js.map" />
+    <None Include="wwwroot\runtime.js" />
+    <None Include="wwwroot\runtime.js.map" />
+    <None Include="wwwroot\styles.js" />
+    <None Include="wwwroot\styles.js.map" />
+    <None Include="wwwroot\vendor.js" />
+    <None Include="wwwroot\vendor.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj" />
     <ProjectReference Include="..\PresentationLayer\DataAccessLayer.csproj" />
   </ItemGroup>
