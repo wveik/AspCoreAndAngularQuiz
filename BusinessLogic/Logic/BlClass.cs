@@ -1,17 +1,17 @@
-﻿using System;
+﻿using BusinessLogic.Interfaces;
 using Common.DTO;
-using DataAccessLayer;
 using DataAccessLayer.Entities;
+using DataAccessLayer.Interfaces;
 
-namespace BusinessLogic
+namespace BusinessLogic.Logic
 {
-	public class BlClass : IDisposable
+	public class BlClass : IBlClass
 	{
-		private UnitOfWork Db { get; }
+		private IUnitOfWork Db { get; }
 
-		public BlClass()
+		public BlClass(IUnitOfWork db)
 		{
-			Db = new UnitOfWork();
+			Db = db;
 		}
 
 		public void AddPlayer(PlayerDto element)

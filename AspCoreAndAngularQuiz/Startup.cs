@@ -1,12 +1,14 @@
 using BusinessLogic.Interfaces;
+using BusinessLogic.Logic;
 using BusinessLogic.Services;
 using DataAccessLayer;
+using DataAccessLayer.EF;
 using DataAccessLayer.Interfaces;
-using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -24,9 +26,14 @@ namespace AspCoreAndAngularQuiz
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDbContext<Context>(options => 
+				options.UseSqlite("Data Source=quiz.db"));
+
 			InitUnitOfWork(services);
 
 			InitServices(services);
+
+			InitLogic(services);
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
@@ -37,14 +44,19 @@ namespace AspCoreAndAngularQuiz
 			});
 		}
 
+		private void InitLogic(IServiceCollection services)
+		{
+			services.AddTransient<IBlClass, BlClass>();
+		}
+
 		private void InitServices(IServiceCollection services)
 		{
-			services.AddSingleton<IQuestionService, QuestionService>();
+			services.AddTransient<IQuestionService, QuestionService>();
 		}
 
 		private void InitUnitOfWork(IServiceCollection services)
 		{
-			services.AddSingleton<IUnitOfWork, UnitOfWork>();
+			services.AddTransient<IUnitOfWork, UnitOfWork>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,9 +11,9 @@ namespace DataAccessLayer
 		private PlayerRepository _playersRepository;
 		private QuestionRepository _questionRepository;
 
-		public UnitOfWork()
+		public UnitOfWork(Context dataBase)
 		{
-			DataBase = new Context();
+			DataBase = dataBase;
 		}
 
 		public IRepository<Player> Players
