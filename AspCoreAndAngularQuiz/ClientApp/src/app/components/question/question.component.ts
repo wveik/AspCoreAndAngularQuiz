@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from '../../services/api-service.service';
+import { Question } from 'src/app/Entities/Question';
 
 @Component({
   selector: 'app-question',
@@ -10,14 +11,18 @@ export class QuestionComponent implements OnInit {
 
   constructor(private service: ApiServiceService) { }
 
+  question: Question;
+
   ngOnInit() {
+    this.question = new Question();
   }
 
-  question: string = "";
-
   post() {
-    console.log(this.question);
     this.service.postQuestion(this.question);
+
+    this.question = new Question();
+
+    alert("data post to server");
   }
 
 }

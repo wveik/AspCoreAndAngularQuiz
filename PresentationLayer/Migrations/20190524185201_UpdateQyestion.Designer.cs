@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20190523203446_Questions")]
-    partial class Questions
+    [Migration("20190524185201_UpdateQyestion")]
+    partial class UpdateQyestion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,11 +45,13 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Answer");
+
                     b.Property<DateTime>("DateInsert");
 
                     b.Property<DateTime>("DateUpdate");
 
-                    b.Property<string>("Question");
+                    b.Property<string>("Text");
 
                     b.HasKey("Id");
 

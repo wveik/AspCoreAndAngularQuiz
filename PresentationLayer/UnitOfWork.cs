@@ -1,42 +1,23 @@
 ﻿using DataAccessLayer.EF;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Interfaces;
-using DataAccessLayer.Repositories;
 
 namespace DataAccessLayer
 {
 	public class UnitOfWork : IUnitOfWork
 	{
 		private Context DataBase { get; }
-		private PlayerRepository _playersRepository;
-		private QuestionRepository _questionRepository;
 
-		public UnitOfWork(Context dataBase)
+		public UnitOfWork(Context dataBase, IRepository<Player> players, IRepository<Question> questions)
 		{
 			DataBase = dataBase;
+			Players = players;
+			Questions = questions;
 		}
 
-		public IRepository<Player> Players
-		{
-			get
-			{
-				if (_playersRepository == null)
-					_playersRepository = new PlayerRepository(DataBase);
+		public IRepository<Player> Players { get; }
 
-				return _playersRepository;
-			}
-		}
-
-		public IRepository<Question> Questions
-		{
-			get
-			{
-				if (_questionRepository == null)
-					_questionRepository = new QuestionRepository(DataBase);
-
-				return _questionRepository;
-			}
-		}
+		public IRepository<Question> Questions { get; }
 
 		public void Save()
 		{

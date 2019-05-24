@@ -43,11 +43,19 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Answer");
+
                     b.Property<DateTime>("DateInsert");
 
                     b.Property<DateTime>("DateUpdate");
 
                     b.Property<string>("Text");
+
+                    b.Property<string>("WrongAnswer1");
+
+                    b.Property<string>("WrongAnswer2");
+
+                    b.Property<string>("WrongAnswer3");
 
                     b.HasKey("Id");
 

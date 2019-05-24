@@ -34,9 +34,13 @@ namespace AspCoreAndAngularQuiz.Controllers
         [HttpPost]
         public void Post([FromBody] Question question)
         {
-			_questionService.SaveQuestion(new QuestionDto()
+			_questionService.SaveQuestion(new QuestionDto
 			{
-				Text = question.Text
+				Text = question.Text,
+				Answer = question.Answer,
+				WrongAnswer1 = question.WrongAnswer1,
+				WrongAnswer2 = question.WrongAnswer2,
+				WrongAnswer3 = question.WrongAnswer3
 			});
 		}
 	}
