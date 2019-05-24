@@ -12,10 +12,5 @@ namespace DataAccessLayer.EF
 		public DbSet<Player> Players { get; set; }
 
 		public DbSet<Question> Questions { get; set; }
-
-		//protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		//{
-		//	optionsBuilder.UseSqlite("Data Source=quiz.db");
-		//}
 	}
 }

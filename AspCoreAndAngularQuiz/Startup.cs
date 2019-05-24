@@ -1,6 +1,7 @@
 using BusinessLogic.Interfaces;
 using BusinessLogic.Logic;
 using BusinessLogic.Services;
+using BusinessLogic.System;
 using DataAccessLayer;
 using DataAccessLayer.EF;
 using DataAccessLayer.Interfaces;
@@ -26,8 +27,10 @@ namespace AspCoreAndAngularQuiz
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			MapperInitializer.InitMapper();
+
 			services.AddDbContext<Context>(options => 
-				options.UseSqlite("Data Source=quiz.db"));
+				options.UseSqlite(Configuration.GetConnectionString("QuizDatabase")));
 
 			InitUnitOfWork(services);
 
@@ -83,9 +86,6 @@ namespace AspCoreAndAngularQuiz
 
 			app.UseSpa(spa =>
 			{
-				// To learn more about options for serving an Angular SPA from ASP.NET Core,
-				// see https://go.microsoft.com/fwlink/?linkid=864501
-
 				spa.Options.SourcePath = "ClientApp";
 
 				if (env.IsDevelopment())

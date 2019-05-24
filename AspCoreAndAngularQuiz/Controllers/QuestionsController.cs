@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using AspCoreAndAngularQuiz.Models.Questions;
 using BusinessLogic.Interfaces;
 using Common.DTO;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspCoreAndAngularQuiz.Controllers
@@ -14,7 +10,7 @@ namespace AspCoreAndAngularQuiz.Controllers
     [ApiController]
     public class QuestionsController : ControllerBase
     {
-	    private IQuestionService _questionService;
+	    private readonly IQuestionService _questionService;
 		public QuestionsController(IQuestionService questionService)
 		{
 			_questionService = questionService;
@@ -22,17 +18,17 @@ namespace AspCoreAndAngularQuiz.Controllers
 
 	    // GET: api/Questions
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<QuestionDto> Get()
         {
-            return new string[] { "value1", "value2" };
+	        return _questionService.GetAllQuestion();
         }
 
         // GET: api/Questions/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public QuestionDto Get(int id)
         {
-            return "value";
-        }
+			return _questionService.GetQuestionById(id);
+		}
 
         // POST: api/Questions
         [HttpPost]

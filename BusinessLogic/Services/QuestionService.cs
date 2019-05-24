@@ -1,4 +1,6 @@
-﻿using BusinessLogic.Interfaces;
+﻿using System.Collections.Generic;
+using AutoMapper;
+using BusinessLogic.Interfaces;
 using Common.DTO;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Interfaces;
@@ -16,11 +18,29 @@ namespace BusinessLogic.Services
 
 		public void SaveQuestion(QuestionDto dto)
 		{
-			_unitOfWork.Questions.Create(new Question()
-			{
-				Text = dto.Text
-			});
+			var result = Mapper.Map<QuestionDto, Question>(dto);
+
+			_unitOfWork.Questions.Create(result);
+
 			_unitOfWork.Save();
+		}
+
+		public IEnumerable<QuestionDto> GetAllQuestion()
+		{
+			var questions = _unitOfWork.Questions.ReadAll();
+
+			var result = Mapper.Map<IEnumerable<Question>, List<QuestionDto>>(questions);
+
+			return result;
+		}
+
+		public QuestionDto GetQuestionById(int id)
+		{
+			var question = _unitOfWork.Questions.Read(id);
+
+			var result = Mapper.Map<Question, QuestionDto>(question);
+
+			return result;
 		}
 	}
 }
