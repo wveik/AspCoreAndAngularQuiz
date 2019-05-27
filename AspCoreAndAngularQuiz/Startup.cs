@@ -17,29 +17,18 @@ namespace AspCoreAndAngularQuiz
 {
 	public class Startup
 	{
-		private readonly IHostingEnvironment _currentEnvironment;
 		public IConfiguration Configuration { get; }
 
-		public Startup(IConfiguration configuration, IHostingEnvironment env)
+		public Startup(IConfiguration configuration)
 		{
-			_currentEnvironment = env;
 			Configuration = configuration;
 		}
 
-		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
 			InitMappers();
 
-			var connectionString = "";
-
-			if (_currentEnvironment.IsDevelopment())
-				connectionString = Configuration.GetConnectionString("QuizDatabase-TST");
-
-			if (_currentEnvironment.IsProduction())
-			{
-				// TODO: if Production get any connectionString
-			}
+			var connectionString = Configuration.GetConnectionString("QuizDatabase");
 
 			services.AddDbContext<Context>(options =>
 			{
@@ -82,21 +71,16 @@ namespace AspCoreAndAngularQuiz
 			services.AddTransient<IUnitOfWork, UnitOfWork>();
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
 			}
-			else
+			if (env.IsProduction())
 			{
 				app.UseExceptionHandler("/Error");
-			}
-
-
-			if (_currentEnvironment.IsProduction())
-			{
+			
 				app.UseDefaultFiles();
 				app.UseStaticFiles();
 			}
