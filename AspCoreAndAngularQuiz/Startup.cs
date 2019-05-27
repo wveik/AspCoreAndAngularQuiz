@@ -17,20 +17,34 @@ namespace AspCoreAndAngularQuiz
 {
 	public class Startup
 	{
-		public Startup(IConfiguration configuration)
+		private readonly IHostingEnvironment _currentEnvironment;
+		public IConfiguration Configuration { get; }
+
+		public Startup(IConfiguration configuration, IHostingEnvironment env)
 		{
+			_currentEnvironment = env;
 			Configuration = configuration;
 		}
-
-		public IConfiguration Configuration { get; }
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
 			InitMappers();
 
-			services.AddDbContext<Context>(options => 
-				options.UseSqlite(Configuration.GetConnectionString("QuizDatabase")));
+			var connectionString = "";
+
+			if (_currentEnvironment.IsDevelopment())
+				connectionString = Configuration.GetConnectionString("QuizDatabase-TST");
+
+			if (_currentEnvironment.IsProduction())
+			{
+				// TODO: if Production get any connectionString
+			}
+
+			services.AddDbContext<Context>(options =>
+			{
+				options.UseSqlite(connectionString);
+			});
 
 			InitRepositories(services);
 

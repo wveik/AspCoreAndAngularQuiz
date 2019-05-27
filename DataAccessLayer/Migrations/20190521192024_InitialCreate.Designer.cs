@@ -18,7 +18,7 @@ namespace DataAccessLayer.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062");
 
-            modelBuilder.Entity("PresentationLayer.Entities.Player", b =>
+            modelBuilder.Entity(".Entities.Player", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
