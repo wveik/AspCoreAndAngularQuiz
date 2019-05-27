@@ -94,8 +94,13 @@ namespace AspCoreAndAngularQuiz
 				app.UseExceptionHandler("/Error");
 			}
 
-			app.UseDefaultFiles();
-			app.UseStaticFiles();
+
+			if (_currentEnvironment.IsProduction())
+			{
+				app.UseDefaultFiles();
+				app.UseStaticFiles();
+			}
+
 			app.UseSpaStaticFiles();
 
 			app.UseMvc(routes =>

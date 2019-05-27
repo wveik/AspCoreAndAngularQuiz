@@ -10,5 +10,7 @@ namespace BusinessLogic.Interfaces
 		IEnumerable<QuestionDto> GetAllQuestion();
 
 		QuestionDto GetQuestionById(int id);
+
+		void DeleteQuestionById(int id);
 	}
 }

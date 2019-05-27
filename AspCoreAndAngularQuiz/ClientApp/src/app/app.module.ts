@@ -11,11 +11,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { QuestionComponent } from './Components/question/question.component';
 import { ApiServiceService } from './services/api-service.service';
+import { QuestionsListComponent } from './components/questions-list/questions-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionComponent
+    QuestionComponent,
+    QuestionsListComponent,
   ],
   imports: [
     HttpClientModule, 

@@ -1,11 +1,14 @@
 export class Question {
-  public text: string;
+  
+  id: number;
 
-  public answer: string;
+  text: string;
 
-  public wrongAnswer1: string;
+  answer: string;
 
-  public wrongAnswer2: string;
+  wrongAnswer1: string;
 
-  public wrongAnswer3: string;
+  wrongAnswer2: string;
+
+  wrongAnswer3: string;
 }

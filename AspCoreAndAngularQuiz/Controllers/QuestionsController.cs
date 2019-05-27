@@ -43,5 +43,12 @@ namespace AspCoreAndAngularQuiz.Controllers
 				WrongAnswer3 = question.WrongAnswer3
 			});
 		}
+
+		// DELETE:
+		[HttpDelete("{id}")]
+		public void Delete(int id)
+		{
+			_questionService.DeleteQuestionById(id);
+		}
 	}
 }

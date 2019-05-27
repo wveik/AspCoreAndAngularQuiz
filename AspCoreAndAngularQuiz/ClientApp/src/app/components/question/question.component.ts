@@ -8,21 +8,24 @@ import { Question } from 'src/app/Entities/Question';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-
+  
   constructor(private service: ApiServiceService) { }
 
   question: Question;
+
+  public postNewQuestion: number = 0;
 
   ngOnInit() {
     this.question = new Question();
   }
 
   post() {
-    this.service.postQuestion(this.question);
+    this.service.postQuestion(this.question).subscribe(response => {
+      this.postNewQuestion++;
 
-    this.question = new Question();
+      this.question = new Question();
 
-    alert("data post to server");
+      alert("data post to server");
+    });
   }
-
 }

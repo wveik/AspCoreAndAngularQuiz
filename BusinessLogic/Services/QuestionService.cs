@@ -42,5 +42,11 @@ namespace BusinessLogic.Services
 
 			return result;
 		}
+
+		public void DeleteQuestionById(int id)
+		{
+			_unitOfWork.Questions.Delete(id);
+			_unitOfWork.Save();
+		}
 	}
 }
