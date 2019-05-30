@@ -35,12 +35,9 @@ namespace DataAccessLayer.Repositories
 
 		public void Update(Question item)
 		{
-			var previousQuestion = _db.Questions.Find(item.Id);
+			item.DateUpdate = DateTime.Now;
 
-			previousQuestion.DateUpdate = DateTime.Now;
-			previousQuestion.Text = item.Text;
-
-			_db.Questions.Update(previousQuestion);
+			_db.Questions.Update(item);
 		}
 
 		public void Delete(int id)

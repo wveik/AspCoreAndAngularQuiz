@@ -16,11 +16,20 @@ namespace BusinessLogic.Services
 			_unitOfWork = unitOfWork;
 		}
 
-		public void SaveQuestion(QuestionDto dto)
+		public void CreateQuestion(QuestionDto dto)
 		{
 			var result = Mapper.Map<QuestionDto, Question>(dto);
 
 			_unitOfWork.Questions.Create(result);
+
+			_unitOfWork.Save();
+		}
+
+		public void UpdateQuestion(QuestionDto dto)
+		{
+			var result = Mapper.Map<QuestionDto, Question>(dto);
+
+			_unitOfWork.Questions.Update(result);
 
 			_unitOfWork.Save();
 		}

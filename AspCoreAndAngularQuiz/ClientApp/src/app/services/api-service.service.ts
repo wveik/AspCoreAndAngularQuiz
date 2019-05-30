@@ -12,8 +12,16 @@ export class ApiServiceService {
     return this.http.get("/api/questions/");
   }
 
+  getQuestionById(id: number) {
+    return this.http.get(`/api/questions/${id}`);
+  }
+
   postQuestion(question: Question) {
     return this.http.post("/api/questions/", question);
+  }
+
+  putQuestion(question: Question) {
+    return this.http.put("/api/questions/", question);
   }
 
   deleteQuestion(question: any) {
