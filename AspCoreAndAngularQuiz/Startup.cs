@@ -77,6 +77,7 @@ namespace AspCoreAndAngularQuiz
 			{
 				app.UseDeveloperExceptionPage();
 			}
+
 			if (env.IsProduction())
 			{
 				app.UseExceptionHandler("/Error");

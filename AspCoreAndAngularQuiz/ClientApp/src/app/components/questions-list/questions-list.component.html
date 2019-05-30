@@ -1,32 +1,35 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-          questions list
-      </div>
+  <div class="row">
+    <div class="col-md-12">
+      questions list
     </div>
-    
-    <hr>
-  
-    <div class="row">
-      <div class="col-md-4" *ngFor="let item of questions">
-        <div class="card mb-4 shadow-sm">
-          
-          <div class="text-center"><h5 class="card-title">{{ item.text }}</h5></div>
+  </div>
 
-          <div class="card-body">
-            <p class="card-text"> answer: {{ item.answer }} </p>
-            <p class="card-text"> wrongAnswer1: {{ item.wrongAnswer1 }} </p>
-            <p class="card-text"> wrongAnswer2: {{ item.wrongAnswer2 }} </p>
-            <p class="card-text"> wrongAnswer3: {{ item.wrongAnswer3 }} </p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                <button (click)="deleteQuestion(item)" type="button" class="btn btn-sm btn-outline-secondary">Delete</button>
-              </div>
-              <small class="text-muted">update time {{ item.dateUpdate | date: 'dd.MM.yyyy' }}</small>
+  <hr>
+
+  <div class="row">
+    <div class="col-md-4" *ngFor="let item of questions">
+      <div class="card mb-4 shadow-sm">
+
+        <div class="text-center">
+          <h5 class="card-title">{{ item.text }}</h5>
+        </div>
+
+        <div class="card-body">
+          <p class="card-text"> answer: {{ item.answer }} </p>
+          <p class="card-text"> wrongAnswer1: {{ item.wrongAnswer1 }} </p>
+          <p class="card-text"> wrongAnswer2: {{ item.wrongAnswer2 }} </p>
+          <p class="card-text"> wrongAnswer3: {{ item.wrongAnswer3 }} </p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a class="btn btn-primary" [routerLink]="['/question-edit/', item.id]" role="button">Edit</a>
+              <button (click)="deleteQuestion(item)" type="button"
+                class="btn btn btn-danger">Delete</button>
             </div>
+            <small class="text-muted">update time {{ item.dateUpdate | date: 'dd.MM.yyyy' }}</small>
           </div>
         </div>
       </div>
-    
+    </div>
+
   </div>

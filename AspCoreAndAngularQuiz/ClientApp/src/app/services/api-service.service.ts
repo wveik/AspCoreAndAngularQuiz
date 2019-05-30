@@ -1,20 +1,19 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Question } from '../Entities/Question';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Question } from "../Entities/Question";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class ApiServiceService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getQuestions() {
-    return this.http.get('/api/questions/');
+    return this.http.get("/api/questions/");
   }
 
   postQuestion(question: Question) {
-    return this.http.post('/api/questions/', question);
+    return this.http.post("/api/questions/", question);
   }
 
   deleteQuestion(question: any) {

@@ -1,3 +1,17 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item" 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]= "{exact: true}"
+          >
+          <a class="nav-link" [routerLink]="['/']">Create Question</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['/all_questions']">All questions</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-<app-question></app-question>
 <router-outlet></router-outlet>

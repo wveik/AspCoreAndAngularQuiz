@@ -12,12 +12,14 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { QuestionComponent } from './Components/question/question.component';
 import { ApiServiceService } from './services/api-service.service';
 import { QuestionsListComponent } from './components/questions-list/questions-list.component';
+import { QuestionEditComponent } from './components/question-edit/question-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuestionComponent,
     QuestionsListComponent,
+    QuestionEditComponent,
   ],
   imports: [
     HttpClientModule, 
