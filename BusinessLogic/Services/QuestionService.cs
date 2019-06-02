@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
 using BusinessLogic.Interfaces;
-using Common.DTO;
+using Common.DTO.Question;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Interfaces;
 

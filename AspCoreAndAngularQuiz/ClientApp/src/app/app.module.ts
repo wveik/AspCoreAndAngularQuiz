@@ -10,9 +10,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { QuestionComponent } from './Components/question/question.component';
-import { ApiServiceService } from './services/api-service.service';
+
+import { QuestionsService } from './services/questions-service.service';
+import { QuizService } from './services/quiz-service.service';
+
 import { QuestionsListComponent } from './components/questions-list/questions-list.component';
 import { QuestionEditComponent } from './components/question-edit/question-edit.component';
+import { QuizComponent } from './components/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,7 @@ import { QuestionEditComponent } from './components/question-edit/question-edit.
     QuestionComponent,
     QuestionsListComponent,
     QuestionEditComponent,
+    QuizComponent,
   ],
   imports: [
     HttpClientModule, 
@@ -35,7 +40,8 @@ import { QuestionEditComponent } from './components/question-edit/question-edit.
     
   ],
   providers: [
-    ApiServiceService
+    QuestionsService,
+    QuizService
   ],
   bootstrap: [AppComponent]
 })

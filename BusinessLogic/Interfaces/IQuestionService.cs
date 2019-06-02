@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Common.DTO;
+using Common.DTO.Question;
 
 namespace BusinessLogic.Interfaces
 {

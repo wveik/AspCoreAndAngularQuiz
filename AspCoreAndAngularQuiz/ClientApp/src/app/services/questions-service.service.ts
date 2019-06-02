@@ -5,7 +5,7 @@ import { Question } from "../Entities/Question";
 @Injectable({
   providedIn: "root"
 })
-export class ApiServiceService {
+export class QuestionsService {
   constructor(private http: HttpClient) {}
 
   getQuestions() {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { ApiServiceService } from 'src/app/services/api-service.service';
+import { QuestionsService } from 'src/app/services/questions-service.service';
 import { Question } from 'src/app/Entities/Question';
 
 @Component({
@@ -13,7 +13,7 @@ export class QuestionEditComponent implements OnInit {
 
   question: Question = new Question();
 
-  constructor(private route: ActivatedRoute, private service: ApiServiceService) {}
+  constructor(private route: ActivatedRoute, private service: QuestionsService) {}
 
   ngOnInit() {
     this.id = +this.route.snapshot.params["id"];

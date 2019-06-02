@@ -1,11 +1,6 @@
-import {
-  Component,
-  OnInit,
-  SimpleChange,
-  Input,
-  OnChanges
-} from "@angular/core";
-import { ApiServiceService } from "src/app/services/api-service.service";
+import { Component, OnInit } from "@angular/core";
+
+import { QuestionsService } from "src/app/services/questions-service.service";
 
 @Component({
   selector: "app-questions-list",
@@ -13,7 +8,7 @@ import { ApiServiceService } from "src/app/services/api-service.service";
   styleUrls: ["./questions-list.component.css"]
 })
 export class QuestionsListComponent implements OnInit {
-  constructor(private service: ApiServiceService) {}
+  constructor(private service: QuestionsService) {}
 
   questions: any = [];
 

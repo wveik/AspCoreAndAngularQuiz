@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using AspCoreAndAngularQuiz.Models.Questions;
-using AutoMapper;
 using BusinessLogic.Interfaces;
-using Common.DTO;
+using Common.DTO.Question;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspCoreAndAngularQuiz.Controllers
@@ -35,14 +33,7 @@ namespace AspCoreAndAngularQuiz.Controllers
         [HttpPost]
         public void Post([FromBody] QuestionDto question)
         {
-			_questionService.CreateQuestion(new QuestionDto
-			{
-				Text = question.Text,
-				Answer = question.Answer,
-				WrongAnswer1 = question.WrongAnswer1,
-				WrongAnswer2 = question.WrongAnswer2,
-				WrongAnswer3 = question.WrongAnswer3
-			});
+			_questionService.CreateQuestion(question);
 		}
 
 		// DELETE:

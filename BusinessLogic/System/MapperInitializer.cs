@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Common.DTO;
+using Common.DTO.Question;
 using DataAccessLayer.Entities;
 
 namespace BusinessLogic.System

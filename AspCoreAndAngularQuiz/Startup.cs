@@ -4,6 +4,7 @@ using BusinessLogic.System;
 using DataAccessLayer;
 using DataAccessLayer.EF;
 using DataAccessLayer.Interfaces;
+using DataAccessLayer.Interfaces.Question;
 using DataAccessLayer.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -57,12 +58,13 @@ namespace AspCoreAndAngularQuiz
 
 		private void InitRepositories(IServiceCollection services)
 		{
-			services.AddTransient<IRepository<DataAccessLayer.Entities.Question>, QuestionRepository>();
+			services.AddTransient<IQuestionRepository, QuestionRepository>();
 			services.AddTransient<IRepository<DataAccessLayer.Entities.Player>, PlayerRepository>();
 		}
 
 		private void InitServices(IServiceCollection services)
 		{
+			services.AddTransient<IQuestionService, QuestionService>();
 			services.AddTransient<IQuestionService, QuestionService>();
 		}
 

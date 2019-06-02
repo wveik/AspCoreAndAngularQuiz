@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.DTO
+namespace Common.DTO.Question
 {
 	public class QuestionDto
 	{

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ApiServiceService } from "../../services/api-service.service";
+import { QuestionsService } from 'src/app/services/questions-service.service';
 import { Question } from "src/app/Entities/Question";
 
 @Component({
@@ -8,7 +8,7 @@ import { Question } from "src/app/Entities/Question";
   styleUrls: ["./question.component.css"]
 })
 export class QuestionComponent implements OnInit {
-  constructor(private service: ApiServiceService) {}
+  constructor(private service: QuestionsService) {}
 
   question: Question;
 

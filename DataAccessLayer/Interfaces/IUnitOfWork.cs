@@ -1,5 +1,6 @@
 ﻿using System;
 using DataAccessLayer.Entities;
+using DataAccessLayer.Interfaces.Question;
 
 namespace DataAccessLayer.Interfaces
 {
@@ -7,7 +8,7 @@ namespace DataAccessLayer.Interfaces
 	{
 		IRepository<Player> Players { get; }
 
-		IRepository<Question> Questions { get; }
+		IQuestionRepository Questions { get; }
 
 		void Save();
 	}

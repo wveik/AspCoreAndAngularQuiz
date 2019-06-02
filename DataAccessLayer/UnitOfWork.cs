@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.EF;
 using DataAccessLayer.Entities;
 using DataAccessLayer.Interfaces;
+using DataAccessLayer.Interfaces.Question;
 
 namespace DataAccessLayer
 {
@@ -8,7 +9,7 @@ namespace DataAccessLayer
 	{
 		private Context DataBase { get; }
 
-		public UnitOfWork(Context dataBase, IRepository<Player> players, IRepository<Question> questions)
+		public UnitOfWork(Context dataBase, IRepository<Player> players, IQuestionRepository questions)
 		{
 			DataBase = dataBase;
 			Players = players;
@@ -17,7 +18,7 @@ namespace DataAccessLayer
 
 		public IRepository<Player> Players { get; }
 
-		public IRepository<Question> Questions { get; }
+		public IQuestionRepository Questions { get; }
 
 		public void Save()
 		{
