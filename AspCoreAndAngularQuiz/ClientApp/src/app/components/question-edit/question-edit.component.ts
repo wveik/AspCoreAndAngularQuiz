@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { QuestionsService } from 'src/app/services/questions-service.service';
-import { Question } from 'src/app/Entities/Question';
+import { Question } from 'src/app/Entities/question';
 
 @Component({
   selector: "app-question-edit",

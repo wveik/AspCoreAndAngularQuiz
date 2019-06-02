@@ -16,38 +16,38 @@ namespace BusinessLogic.Services
 			_unitOfWork = unitOfWork;
 		}
 
-		public void CreateQuestion(QuestionDto dto)
+		public void CreateQuestion(QuestionDTO dto)
 		{
-			var result = Mapper.Map<QuestionDto, Question>(dto);
+			var result = Mapper.Map<QuestionDTO, Question>(dto);
 
 			_unitOfWork.Questions.Create(result);
 
 			_unitOfWork.Save();
 		}
 
-		public void UpdateQuestion(QuestionDto dto)
+		public void UpdateQuestion(QuestionDTO dto)
 		{
-			var result = Mapper.Map<QuestionDto, Question>(dto);
+			var result = Mapper.Map<QuestionDTO, Question>(dto);
 
 			_unitOfWork.Questions.Update(result);
 
 			_unitOfWork.Save();
 		}
 
-		public IEnumerable<QuestionDto> GetAllQuestion()
+		public IEnumerable<QuestionDTO> GetAllQuestion()
 		{
 			var questions = _unitOfWork.Questions.ReadAll();
 
-			var result = Mapper.Map<IEnumerable<Question>, List<QuestionDto>>(questions);
+			var result = Mapper.Map<IEnumerable<Question>, List<QuestionDTO>>(questions);
 
 			return result;
 		}
 
-		public QuestionDto GetQuestionById(int id)
+		public QuestionDTO GetQuestionById(int id)
 		{
 			var question = _unitOfWork.Questions.Read(id);
 
-			var result = Mapper.Map<Question, QuestionDto>(question);
+			var result = Mapper.Map<Question, QuestionDTO>(question);
 
 			return result;
 		}

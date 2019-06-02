@@ -1,3 +1,4 @@
+using System;
 using BusinessLogic.Interfaces;
 using BusinessLogic.Services;
 using BusinessLogic.System;
@@ -27,6 +28,12 @@ namespace AspCoreAndAngularQuiz
 
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddDistributedMemoryCache();
+			services.AddSession(options => {
+				//Set timeout session
+				options.IdleTimeout = TimeSpan.FromMinutes(30);   
+			});
+
 			InitMappers();
 
 			var connectionString = Configuration.GetConnectionString("QuizDatabase");
@@ -65,7 +72,7 @@ namespace AspCoreAndAngularQuiz
 		private void InitServices(IServiceCollection services)
 		{
 			services.AddTransient<IQuestionService, QuestionService>();
-			services.AddTransient<IQuestionService, QuestionService>();
+			services.AddTransient<IQuizService, QuizService>();
 		}
 
 		private void InitUnitOfWork(IServiceCollection services)
@@ -89,6 +96,7 @@ namespace AspCoreAndAngularQuiz
 			}
 
 			app.UseSpaStaticFiles();
+			app.UseSession();
 
 			app.UseMvc(routes =>
 			{

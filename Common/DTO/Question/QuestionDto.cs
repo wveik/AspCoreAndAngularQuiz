@@ -2,7 +2,8 @@
 
 namespace Common.DTO.Question
 {
-	public class QuestionDto
+	[Serializable]
+	public class QuestionDTO
 	{
 		public int Id { get; set; }
 

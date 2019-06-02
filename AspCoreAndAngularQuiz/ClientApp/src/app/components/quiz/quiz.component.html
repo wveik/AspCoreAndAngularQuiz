@@ -1,3 +1,22 @@
-<p>
-  quiz works!
-</p>
+<div class="container">
+
+  <div *ngIf="isFinished">
+    <p> </p>
+    <p class="text-danger bg-dark">Quiz is finished</p>
+  </div>
+
+  <div *ngIf="!isFinished">
+      <div class="d-flex p-2 bd-highlight">{{question}}</div>
+      <hr>
+      <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+          <button (click)="postQuiz(answer1)" type="button" class="btn btn-secondary">{{answer1}}</button>
+          <button (click)="postQuiz(answer2)" type="button" class="btn btn-secondary">{{answer2}}</button>
+      </div>
+      <hr>
+      <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+        <button (click)="postQuiz(answer3)" type="button" class="btn btn-secondary">{{answer3}}</button>
+        <button (click)="postQuiz(answer4)" type="button" class="btn btn-secondary">{{answer4}}</button>
+      </div>
+  </div>
+  
+</div>

@@ -9,20 +9,20 @@ namespace BusinessLogic.Interfaces
 		/// Create question
 		/// </summary>
 		/// <param name="dto"></param>
-		void CreateQuestion(QuestionDto dto);
+		void CreateQuestion(QuestionDTO dto);
 
 		/// <summary>
 		/// Get all questions
 		/// </summary>
 		/// <returns></returns>
-		IEnumerable<QuestionDto> GetAllQuestion();
+		IEnumerable<QuestionDTO> GetAllQuestion();
 
 		/// <summary>
 		/// Get question by id
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		QuestionDto GetQuestionById(int id);
+		QuestionDTO GetQuestionById(int id);
 
 		/// <summary>
 		/// Delete question
@@ -34,6 +34,6 @@ namespace BusinessLogic.Interfaces
 		/// Update question
 		/// </summary>
 		/// <param name="dto"></param>
-		void UpdateQuestion(QuestionDto dto);
+		void UpdateQuestion(QuestionDTO dto);
 	}
 }

@@ -17,21 +17,21 @@ namespace AspCoreAndAngularQuiz.Controllers
 
 	    // GET: api/Questions
         [HttpGet]
-        public IEnumerable<QuestionDto> Get()
+        public IEnumerable<QuestionDTO> Get()
         {
 	        return _questionService.GetAllQuestion();
         }
 
         // GET: api/Questions/5
         [HttpGet("{id}", Name = "Get")]
-        public QuestionDto Get(int id)
+        public QuestionDTO Get(int id)
         {
 			return _questionService.GetQuestionById(id);
 		}
 
         // POST: api/Questions
         [HttpPost]
-        public void Post([FromBody] QuestionDto question)
+        public void Post([FromBody] QuestionDTO question)
         {
 			_questionService.CreateQuestion(question);
 		}
@@ -44,7 +44,7 @@ namespace AspCoreAndAngularQuiz.Controllers
 		}
 
 		[HttpPut]
-		public void Put([FromBody] QuestionDto question)
+		public void Put([FromBody] QuestionDTO question)
 		{
 			_questionService.UpdateQuestion(question);
 		}

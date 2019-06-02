@@ -8,7 +8,7 @@ namespace BusinessLogic.System
 	{
 		public static void InitMapper()
 		{
-			Mapper.Initialize(cfg => cfg.CreateMap<Question, QuestionDto>());
+			Mapper.Initialize(cfg => cfg.CreateMap<Question, QuestionDTO>());
 		}
 	}
 }

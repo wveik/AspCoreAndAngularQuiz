@@ -2,6 +2,7 @@
 using BusinessLogic.Interfaces;
 using BusinessLogic.System;
 using Common.DTO.Quiz;
+using Common.Exceptions;
 using DataAccessLayer.Interfaces;
 
 namespace BusinessLogic.Services
@@ -13,6 +14,17 @@ namespace BusinessLogic.Services
 		public QuizService(IUnitOfWork unitOfWork)
 		{
 			_unitOfWork = unitOfWork;
+		}
+
+		public bool IsRightAnswer(PostQuizDTO data)
+		{
+			var id = data.QuestionId;
+			var question = _unitOfWork.Questions.Read(id);
+
+			if (question == null)
+				throw new LogicException($"Error from check quiz. Did not find question by id: {id}");
+
+			return question.Answer == data.Answer;
 		}
 
 		public ResponseQuizDTO GetFirstQuizDto()
@@ -44,6 +56,8 @@ namespace BusinessLogic.Services
 			};
 
 			questions.Shuffle();
+
+			result.Quiz.Question = question.Text;
 
 			result.Quiz.Answer1 = questions[0];
 			result.Quiz.Answer2 = questions[1];

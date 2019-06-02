@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { QuestionComponent } from './Components/question/question.component';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 import { QuestionsService } from './services/questions-service.service';
 import { QuizService } from './services/quiz-service.service';
@@ -27,6 +28,8 @@ import { QuizComponent } from './components/quiz/quiz.component';
     QuizComponent,
   ],
   imports: [
+    Ng4LoadingSpinnerModule.forRoot(),
+    
     HttpClientModule, 
 
     BrowserModule,
