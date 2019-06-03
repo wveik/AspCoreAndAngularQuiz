@@ -3,6 +3,12 @@
   <div *ngIf="isFinished">
     <p> </p>
     <p class="text-danger bg-dark">Quiz is finished</p>
+    
+    <p class="text-success bg-dark" *ngIf="isWinner">You winner</p>
+    <p class="text-danger bg-dark" *ngIf="!isWinner">You lose</p>
+
+    <p class="text-light bg-dark">Full count question: {{fullCountQuestion}}</p>
+    <p class="text-light bg-dark">success count question: {{successCountQuestion}}</p>
   </div>
 
   <div *ngIf="!isFinished">

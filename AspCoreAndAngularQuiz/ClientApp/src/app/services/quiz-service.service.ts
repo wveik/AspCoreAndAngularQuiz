@@ -10,10 +10,18 @@ export class QuizService {
   constructor(private http: HttpClient) { }
 
   getFirstQuizDto() {
-    return this.http.get("/api/quiz/");
+    return this.http.get("/quiz/GetFirstQuizDto");
   }
 
   postQuiz(postQuiz: PostQuiz) {
-    return this.http.post("/api/quiz/", postQuiz);
+    return this.http.post("/quiz/PostQuiz", postQuiz);
+  }
+
+  getNextQuizDto(id: number) {
+    return this.http.get(`/quiz/GetNextQuizDto/${id}`);
+  }
+
+  getResultQuiz() {
+    return this.http.get("/quiz/GetResultQuiz/");
   }
 }

@@ -7,5 +7,7 @@ namespace BusinessLogic.Interfaces
 		ResponseQuizDTO GetFirstQuizDto();
 
 		bool IsRightAnswer(PostQuizDTO data);
+
+		ResponseQuizDTO GetNextQuizDto(int id);
 	}
 }

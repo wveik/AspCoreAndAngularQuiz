@@ -5,5 +5,7 @@
 		Entities.Question GetFirst();
 
 		bool HasNext(int id);
+
+		Entities.Question GetNext(int id);
 	}
 }

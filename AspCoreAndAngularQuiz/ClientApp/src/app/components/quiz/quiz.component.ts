@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { QuizService } from "src/app/services/quiz-service.service";
 import { ResponseQuiz } from "src/app/Entities/response-quiz";
-import { PostQuiz } from 'src/app/Entities/post-quiz';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { PostQuiz } from "src/app/Entities/post-quiz";
+import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
+import { ResultQuiz } from "src/app/Entities/result-quiz";
 
 @Component({
   selector: "app-quiz",
@@ -11,6 +12,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 })
 export class QuizComponent implements OnInit {
   isFinished: boolean = true;
+
   question: string;
 
   answer1: string;
@@ -23,39 +25,99 @@ export class QuizComponent implements OnInit {
 
   questionId: number;
 
-  constructor(private service: QuizService, private spinnerService: Ng4LoadingSpinnerService) {
-    this.responseQuiz = new ResponseQuiz();
-  }
+  isWinner: boolean;
 
-  responseQuiz: ResponseQuiz;
+  fullCountQuestion: number;
+
+  successCountQuestion: number;
+
+  constructor(
+    private service: QuizService,
+    private spinnerService: Ng4LoadingSpinnerService
+  ) {}
 
   ngOnInit() {
+    this.spinnerService.show();
+
     this.service.getFirstQuizDto().subscribe(response => {
-      this.responseQuiz = <ResponseQuiz>response;
+      this.spinnerService.hide();
+      const responseQuiz = <ResponseQuiz>response;
 
-      this.isFinished = this.responseQuiz.isFinished;
-
-      const quiz = this.responseQuiz.quiz;
-
-      this.questionId = quiz.questionId;
-      this.question = quiz.question;
-
-      this.answer1 = quiz.answer1;
-      this.answer2 = quiz.answer2;
-      this.answer3 = quiz.answer3;
-      this.answer4 = quiz.answer4;
+      this.setQuiz(responseQuiz);
     });
+  }
+
+  setQuiz(responseQuiz: ResponseQuiz) {
+    this.isFinished = responseQuiz.isFinished;
+
+    const quiz = responseQuiz.quiz;
+
+    this.questionId = quiz.questionId;
+    this.question = quiz.question;
+
+    this.answer1 = quiz.answer1;
+    this.answer2 = quiz.answer2;
+    this.answer3 = quiz.answer3;
+    this.answer4 = quiz.answer4;
   }
 
   postQuiz(answer: string) {
     this.spinnerService.show();
 
     let postQuiz: PostQuiz = new PostQuiz(this.questionId, answer);
-    //this.spinnerService.hide();
-    /*
-    this.service.postQuiz(postQuiz).subscribe(response => {
-      console.log(response);
-      
-    });*/
+
+    this.service.postQuiz(postQuiz).subscribe(
+      success => {
+        this.getNextQuizDto();
+      },
+      error => {
+        this.spinnerService.hide();
+
+        alert("Error from server");
+      }
+    );
+  }
+
+  getNextQuizDto() {
+    this.service.getNextQuizDto(this.questionId).subscribe(
+      success => {
+        this.spinnerService.hide();
+
+        const responseQuiz = <ResponseQuiz>success;
+
+        if (responseQuiz.isFinished) {
+          this.isFinished = true;
+          this.getResultQuiz();
+        } else {
+          this.setQuiz(responseQuiz);
+        }
+      },
+      error => {
+        this.spinnerService.hide();
+
+        alert("Error from server");
+      }
+    );
+  }
+
+  getResultQuiz() {
+    this.service.getResultQuiz().subscribe(
+      success => {
+        this.spinnerService.hide();
+
+        const result = <ResultQuiz>success;
+
+        this.isWinner = result.isWinner;
+
+        this.fullCountQuestion = result.fullCountQuestion;
+
+        this.successCountQuestion = result.successCountQuestion;
+      },
+      error => {
+        this.spinnerService.hide();
+
+        alert("Error from server");
+      }
+    );
   }
 }

@@ -55,6 +55,14 @@ namespace DataAccessLayer.Repositories
 				.FirstOrDefault();
 		}
 
+		public Question GetNext(int id)
+		{
+			return _db.Questions
+				.Where(x => x.Id > id)
+				.OrderBy(x => x.Id)
+				.FirstOrDefault();
+		}
+
 		public bool HasNext(int id)
 		{
 			return _db.Questions.Count(x => x.Id > id) > 0;

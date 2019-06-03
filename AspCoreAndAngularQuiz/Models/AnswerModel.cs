@@ -4,9 +4,9 @@ using Common.DTO.Question;
 namespace AspCoreAndAngularQuiz.Models
 {
 	[Serializable]
-	public class Answer
+	public class AnswerModel
 	{
-		public Answer(bool isRightAnswer, QuestionDTO question)
+		public AnswerModel(bool isRightAnswer, QuestionDTO question)
 		{
 			IsRightAnswer = isRightAnswer;
 			Question = question;

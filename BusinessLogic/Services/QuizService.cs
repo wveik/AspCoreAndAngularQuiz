@@ -66,5 +66,45 @@ namespace BusinessLogic.Services
 
 			return result;
 		}
+
+		public ResponseQuizDTO GetNextQuizDto(int id)
+		{
+			var result = new ResponseQuizDTO
+			{
+				Quiz = new QuizDTO()
+			};
+
+			var question = _unitOfWork.Questions.GetNext(id);
+
+			if (question == null)
+			{
+				result = new ResponseQuizDTO
+				{
+					IsFinished = true,
+					HasNext = false
+				};
+
+				return result;
+			}
+
+			result.Quiz.QuestionId = question.Id;
+			result.HasNext = _unitOfWork.Questions.HasNext(question.Id);
+
+			var questions = new List<string>
+			{
+				question.Answer, question.WrongAnswer1, question.WrongAnswer2, question.WrongAnswer3
+			};
+
+			questions.Shuffle();
+
+			result.Quiz.Question = question.Text;
+
+			result.Quiz.Answer1 = questions[0];
+			result.Quiz.Answer2 = questions[1];
+			result.Quiz.Answer3 = questions[2];
+			result.Quiz.Answer4 = questions[3];
+
+			return result;
+		}
 	}
 }
