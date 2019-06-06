@@ -4,6 +4,7 @@ import { ResponseQuiz } from "src/app/Entities/response-quiz";
 import { PostQuiz } from "src/app/Entities/post-quiz";
 import { Ng4LoadingSpinnerService } from "ng4-loading-spinner";
 import { ResultQuiz } from "src/app/Entities/result-quiz";
+import { Quiz } from 'src/app/Entities/quiz';
 
 @Component({
   selector: "app-quiz",
@@ -13,17 +14,7 @@ import { ResultQuiz } from "src/app/Entities/result-quiz";
 export class QuizComponent implements OnInit {
   isFinished: boolean = true;
 
-  question: string;
-
-  answer1: string;
-
-  answer2: string;
-
-  answer3: string;
-
-  answer4: string;
-
-  questionId: number;
+  _responseQuiz: Quiz = new Quiz();
 
   isWinner: boolean;
 
@@ -51,20 +42,13 @@ export class QuizComponent implements OnInit {
     this.isFinished = responseQuiz.isFinished;
 
     const quiz = responseQuiz.quiz;
-
-    this.questionId = quiz.questionId;
-    this.question = quiz.question;
-
-    this.answer1 = quiz.answer1;
-    this.answer2 = quiz.answer2;
-    this.answer3 = quiz.answer3;
-    this.answer4 = quiz.answer4;
+    this._responseQuiz = quiz;
   }
 
   postQuiz(answer: string) {
     this.spinnerService.show();
 
-    let postQuiz: PostQuiz = new PostQuiz(this.questionId, answer);
+    let postQuiz: PostQuiz = new PostQuiz(this._responseQuiz.questionId, answer);
 
     this.service.postQuiz(postQuiz).subscribe(
       success => {
@@ -79,7 +63,7 @@ export class QuizComponent implements OnInit {
   }
 
   getNextQuizDto() {
-    this.service.getNextQuizDto(this.questionId).subscribe(
+    this.service.getNextQuizDto(this._responseQuiz.questionId).subscribe(
       success => {
         this.spinnerService.hide();
 

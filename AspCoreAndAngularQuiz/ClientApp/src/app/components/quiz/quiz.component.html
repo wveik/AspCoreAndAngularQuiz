@@ -12,16 +12,16 @@
   </div>
 
   <div *ngIf="!isFinished">
-      <div class="d-flex p-2 bd-highlight">{{question}}</div>
+      <div class="d-flex p-2 bd-highlight">{{_responseQuiz.question}}</div>
       <hr>
       <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
-          <button (click)="postQuiz(answer1)" type="button" class="btn btn-secondary">{{answer1}}</button>
-          <button (click)="postQuiz(answer2)" type="button" class="btn btn-secondary">{{answer2}}</button>
+          <button (click)="postQuiz(_responseQuiz.answer1)" type="button" class="btn btn-secondary">{{_responseQuiz.answer1}}</button>
+          <button (click)="postQuiz(_responseQuiz.answer2)" type="button" class="btn btn-secondary">{{_responseQuiz.answer2}}</button>
       </div>
       <hr>
       <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
-        <button (click)="postQuiz(answer3)" type="button" class="btn btn-secondary">{{answer3}}</button>
-        <button (click)="postQuiz(answer4)" type="button" class="btn btn-secondary">{{answer4}}</button>
+        <button (click)="postQuiz(_responseQuiz.answer3)" type="button" class="btn btn-secondary">{{_responseQuiz.answer3}}</button>
+        <button (click)="postQuiz(_responseQuiz.answer4)" type="button" class="btn btn-secondary">{{_responseQuiz.answer4}}</button>
       </div>
   </div>
   
